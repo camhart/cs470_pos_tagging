@@ -1,9 +1,3 @@
-cs470_pos_tagging
-=================
-BYU cs470 parts of speech lab
-fall 2014
-Dr. Seppi
-
 File descriptions
 
 data/*.json	- trained data files.  Used by ngramparagraph.py and viterbi.py

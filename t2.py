@@ -1,5 +1,6 @@
 import json, signal
 
+from helpers import cleanUpWord
 
 def buildData():
 
@@ -17,7 +18,7 @@ def buildData():
 	signal.signal(signal.SIGBREAK, handler)  #windows only
 
 	text = ""
-	with open('allTraining.txt') as f:
+	with open('frost_poems.txt') as f:
 		text = f.read()
 
 	totalSize = len(text.split())
@@ -27,6 +28,7 @@ def buildData():
 	for word in text.split():
 		wordChunks = word.split('_')
 		tag = wordChunks[1]
+		wordChunks[0] = cleanUpWord(wordChunks[0])
 		if(tag in model.keys()):
 			# model[tag] = model.setdefault(tag,[]) + [(wordChunks[0])]
 			tagList = model[tag]
@@ -50,7 +52,7 @@ def buildData():
 			model[tag] = [(1, wordChunks[0])]
 		curPos+=1
 
-	with open('t2_json_data.txt', 'w') as f:
+	with open('t2_poems_json_data.txt', 'w') as f:
 		f.write(json.dumps(model))
 
 if __name__ == '__main__':

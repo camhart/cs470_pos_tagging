@@ -1,6 +1,7 @@
 import random, signal, json, time
 
 def buildData():
+
 	t0 = time.time()
 	print("Start: %f" % (t0, ))
 
@@ -18,8 +19,11 @@ def buildData():
 	# register ctrl+break to print values
 	signal.signal(signal.SIGBREAK, handler)  #windows only
 
-	infilename = "allTraining.txt"
-	trainingdata = open(infilename).read()
+	infilename = "frost_poems.txt"
+	trainingdata = ""
+
+	with open(infilename) as f:
+		trainingdata = f.read()
 
 	contextconst = [""]
 
@@ -51,8 +55,6 @@ def buildData():
 		valueList = model.get(key)
 		newList = []
 
-
-
 		while(len(valueList) > 0):
 			val = valueList[0]
 			count = 0
@@ -80,12 +82,9 @@ def buildData():
 	# 	break
 	# print(newModel)
 
-	with open('json_data.txt', 'w') as f:
+	with open('t1_poems_json_data.txt', 'w') as f:
 		f.write(json.dumps(newModel))
-
-def main():
-	buildData()
 
 
 if __name__ == '__main__':
-	main()
+	buildData()

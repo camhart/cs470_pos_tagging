@@ -18,7 +18,7 @@ def buildData():
 	# register ctrl+break to print values
 	signal.signal(signal.SIGBREAK, handler)  #windows only
 
-	infilename = "allTraining.txt"
+	infilename = "frost_poems.txt"
 	trainingdata = open(infilename).read()
 
 	contextconst = ["", ""]
@@ -81,7 +81,7 @@ def buildData():
 	# 	break
 	# print(newModel)
 
-	with open('json_data_2.txt', 'w') as f:
+	with open('t1_2_poems_json_data.txt', 'w') as f:
 		f.write(json.dumps(newModel))
 
 def main():
